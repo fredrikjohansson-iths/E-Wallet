@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Card />
     <router-view />
   </div>
 </template>
