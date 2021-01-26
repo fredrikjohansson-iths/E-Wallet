@@ -1,13 +1,12 @@
 <template>
-  <div class=""></div>
+  <div class=""><button @click="add()">Add</button></div>
 </template>
 
 <script>
 export default {
-  name: "",
-  props: {
-    msg: String
-  }
+  name: "ActiveCard",
+  props: {},
+  provide: {cardholder: "Olle Boström"}
 };
 </script>
 

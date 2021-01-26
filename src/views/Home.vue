@@ -1,6 +1,7 @@
 <template>
   <div class="">
-    <Card />
+    <button @click="add()">Add</button>
+    <Card isActive />
     <Heading />
     <ActiveCard />
     <CardStack />
@@ -10,7 +11,7 @@
 
 <script>
 // @ is an alias to /src
-import Card from "@/components/Card.vue";
+import Card from "@/components/Home/Card.vue";
 import Heading from "@/components/Home/Heading.vue";
 import ActiveCard from "@/components/Home/ActiveCard.vue";
 import CardStack from "@/components/Home/CardStack.vue";
@@ -24,6 +25,18 @@ export default {
     ActiveCard,
     CardStack,
     AddNewCard
+  },
+  provide: { cardholder: "Olle Boström" },
+  methods: {
+    add() {
+      var cardinfo = null;
+      var newElement = {
+        cardholder: "Olle Boström",
+        cardnumber: "5671 5238 4321 4990",
+        date: "03/22"
+      };
+      cardinfo.push(newElement);
+    }
   }
 };
 </script>

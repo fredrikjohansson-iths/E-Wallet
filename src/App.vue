@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Card />
+    <Card  />
     <router-view />
   </div>
 </template>
