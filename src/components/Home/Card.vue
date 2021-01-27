@@ -14,14 +14,18 @@
 export default {
   name: "Card",
   props: { isActive: Boolean },
-  inject: ["cardholder"],
   data: function() {
     return {
-      active: this.isActive,
-      cardholder: "",
-      cardnumber: "0000 0000 0000 0000",
-      vendor: "vendor-bitcoin.svg",
-      date: "00/00"
+      cards: [
+        {
+          id: null,
+          active: this.isActive,
+          cardholder: "",
+          cardnumber: "0000 0000 0000 0000",
+          vendor: "vendor-bitcoin.svg",
+          date: "00/00"
+        }
+      ]
     };
   }
 };

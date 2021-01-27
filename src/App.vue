@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Card  />
+    <router-link to="/AddCard">Add Card</router-link>
+    <router-link to="/">Home</router-link>
     <router-view />
   </div>
 </template>
