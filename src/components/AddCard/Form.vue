@@ -1,22 +1,42 @@
 <template>
   <div class="">
     <form>
-      <label for="cardholder">Name: </label>
-      <input type="text" id="cardholder" v-model="cardholder" />
-      <label for="cardnumber">Card Number: </label>
-      <input
-        @input="validate"
-        id="cardnumber"
-        type="text"
-        v-model="cardnumber"
-      />
+      <label for="firstname">First name </label>
+      <input type="text" id="firstname" v-model="cname1" />
+      <label for="lastname">Last name </label>
+      <input type="text" id="lastname" v-model="cname2" />
+      <label for="cardnumber">Card number </label>
+      <input id="cardnumber" type="text" v-model="cnum" />
       <label for="vendor">Vendor </label>
-      <select id="vendor" v-model="vendor"
-        ><option value="ninja">Ninja</option>
-        <option value="bitcoin">BitCoin</option>
+      <select id="vendor" v-model="vendor">
+        <option value="Blockchain">Blockchain</option>
+        <option value="Bitcoin">BitCoin</option>
+        <option value="Evil">Evil</option>
+        <option value="Ninja">Ninja</option>
       </select>
-      <label for="date">Valid thru </label>
-      <input type="month" id="date" v-model="date" />
+      <label for="date">Month </label>
+      <select id="month" v-model="month">
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
+      <label for="year">Year </label>
+      <select id="year" v-model="year">
+        <option value="21">2021</option>
+        <option value="22">2022</option>
+        <option value="23">2023</option>
+        <option value="24">2024</option>
+        <option value="25">2025</option>
+      </select>
     </form>
     <button @click="onSubmit">Test here</button>
   </div>
@@ -24,32 +44,38 @@
 
 <script>
 export default {
-  name: "",
-  props: {
-    msg: String
-  },
+  name: "Form",
   data: function() {
     return {
-      id: 1,
-      active: "",
-      cardholder: "",
-      cardnumber: "",
+      cname1: "",
+      cname2: "",
+      cnum: "",
       vendor: "",
-      date: ""
+      month: "",
+      year: ""
     };
   },
+  props: { isActive: Boolean },
+  computed: {
+    newData() {
+      const rootData = this.$root.$data.cards;
+      return {
+        cardId: rootData.length,
+        cardDate: this.month + "/" + this.year,
+        cardHolder: this.cname1 + " " + this.cname2,
+        cardNumber: this.cnum
+          .replace(/(\d{4})/g, "$1 ")
+          .replace(/(^\s+|\s+$)/, ""),
+        vendorName: this.vendor,
+        vendorLogo: "vendor-" + this.vendor + ".svg"
+      };
+    }
+  },
   methods: {
-    validate: function() {
-      var inputValue = document.getElementById("cardnumber").value;
-      const regex = /\D/;
-      const validate = regex.test(inputValue);
-
-      if (validate == true) {
-        alert("Only digits allowed in this field");
-      }
-    },
     onSubmit: function() {
-      this.$emit("clicked", this.$data);
+      var rootData = this.$root.$data.cards;
+      rootData.push(this.newData);
+      this.$emit("submitted");
     }
   }
 };

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <router-link to="/AddCard">Add Card</router-link>
-    <router-link to="/">Home</router-link>
+    <div id="nav">
+      <router-link to="/">Home</router-link>
+      <router-link to="/AddCard">Add Card</router-link>
+    </div>
     <router-view />
   </div>
 </template>
@@ -17,7 +19,8 @@
 
 #nav {
   padding: 30px;
-
+  display: flex;
+  justify-content: space-around;
   a {
     font-weight: bold;
     color: #2c3e50;

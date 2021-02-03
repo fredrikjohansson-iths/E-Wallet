@@ -1,41 +1,54 @@
 <template>
-  <div v-if="isActive" id="card" class="card">
+  <div @click="clicked()" id="card" class="card" :class="card.vendorName">
     <img class="chip" src="chip-light.svg" />
-    <img class="vendor" :src="this.vendor" />
-    <p id="cardnumber" class="cardnumber">{{ cardnumber }}</p>
+    <img class="vendor" :src="card.vendorLogo" />
+    <p id="cardnumber" class="cardnumber">{{ card.cardNumber }}</p>
     <p class="cardholder">CARDHOLDER NAME</p>
-    <p id="cardname" class="cardname">{{ cardholder }}</p>
+    <p id="cardname" class="cardname">{{ card.cardHolder }}</p>
     <p class="validthru">VALID THRU</p>
-    <p class="date">{{ date }}</p>
+    <p class="date">{{ card.cardDate }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: "Card",
-  props: { isActive: Boolean },
-  data: function() {
-    return {
-      cards: [
-        {
-          id: null,
-          active: this.isActive,
-          cardholder: "",
-          cardnumber: "0000 0000 0000 0000",
-          vendor: "vendor-bitcoin.svg",
-          date: "00/00"
-        }
-      ]
-    };
+  props: { card: Object },
+  methods: {
+    clicked() {
+      this.$emit("clicked", this.cardId);
+    }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+span {
+  width: max-content;
+  display: inherit;
+  height: 20%;
+}
+
+.Bitcoin {
+  background-color: #ffb74a;
+}
+
+.Ninja {
+  background-color: #363636;
+  color: silver;
+}
+
+.Blockchain {
+  background-color: #7f51e4;
+}
+
+.Evil {
+  background-color: #db2e4d;
+}
+
 .card {
   display: block;
-  background-color: darkgrey;
   width: 95%;
   border-radius: 20px;
   border: 1px solid grey;

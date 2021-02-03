@@ -1,12 +1,16 @@
 <template>
-  <div class=""></div>
+  <div class="">
+    <h1>{{ title }}</h1>
+    <h2>{{ subTitle }}</h2>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "",
+  name: "Heading",
   props: {
-    msg: String
+    title: String,
+    subTitle: String
   }
 };
 </script>
