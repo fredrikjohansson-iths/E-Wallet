@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <Heading title="E-Wallet" subTitle="Home" />
-    <CardStack @clicked="onClick()" />
+    <CardStack @clicked="onClick"/>
     <AddNewCard />
   </div>
 </template>
@@ -14,6 +14,11 @@ import AddNewCard from "@/components/Home/AddNewCard.vue";
 
 export default {
   name: "Home",
+  data() {
+    return {
+      isActive: false
+    }
+  },
   components: {
     Heading,
     CardStack,
@@ -21,7 +26,8 @@ export default {
   },
   methods: {
     onClick(event) {
-      console.log(event);
+
+      console.log(event)
     }
   }
 };

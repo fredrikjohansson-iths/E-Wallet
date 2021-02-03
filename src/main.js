@@ -14,8 +14,8 @@ new Vue({
           cardHolder: "Test Testsson",
           cardId: 1,
           cardNumber: "1234 1234 1234 1234",
-          vendorLogo: "vendor-Blockchain.svg",
-          vendorName: "Blockchain"
+          vendorLogo: "vendor-blockchain.svg",
+          vendorName: "blockchain"
         },
         {
           isActive: false,
@@ -23,8 +23,8 @@ new Vue({
           cardHolder: "Testan Tests",
           cardId: 2,
           cardNumber: "1234 1234 1234 1234",
-          vendorLogo: "vendor-Evil.svg",
-          vendorName: "Evil"
+          vendorLogo: "vendor-evil.svg",
+          vendorName: "evil"
         },
         {
           isActive: false,
@@ -32,8 +32,8 @@ new Vue({
           cardHolder: "Olof Kungjävel",
           cardId: 3,
           cardNumber: "5555 1234 2223 1234",
-          vendorLogo: "vendor-Ninja.svg",
-          vendorName: "Ninja"
+          vendorLogo: "vendor-ninja.svg",
+          vendorName: "ninja"
         }
       ]
     };

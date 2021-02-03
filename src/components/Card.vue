@@ -1,5 +1,5 @@
 <template>
-  <div @click="clicked()" id="card" class="card" :class="card.vendorName">
+  <div id="card" class="card" :class="card.vendorName">
     <img class="chip" src="chip-light.svg" />
     <img class="vendor" :src="card.vendorLogo" />
     <p id="cardnumber" class="cardnumber">{{ card.cardNumber }}</p>
@@ -13,37 +13,34 @@
 <script>
 export default {
   name: "Card",
-  props: { card: Object },
-  methods: {
-    clicked() {
-      this.$emit("clicked", this.cardId);
-    }
-  }
+  props: { card: Object }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-span {
+button {
   width: max-content;
-  display: inherit;
   height: 20%;
+  background: transparent;
+  border: none !important;
+  font-size: 0;
 }
 
-.Bitcoin {
+.bitcoin {
   background-color: #ffb74a;
 }
 
-.Ninja {
+.ninja {
   background-color: #363636;
   color: silver;
 }
 
-.Blockchain {
+.blockchain {
   background-color: #7f51e4;
 }
 
-.Evil {
+.evil {
   background-color: #db2e4d;
 }
 

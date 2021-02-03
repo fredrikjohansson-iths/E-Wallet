@@ -9,10 +9,10 @@
       <input id="cardnumber" type="text" v-model="cnum" />
       <label for="vendor">Vendor </label>
       <select id="vendor" v-model="vendor">
-        <option value="Blockchain">Blockchain</option>
-        <option value="Bitcoin">BitCoin</option>
-        <option value="Evil">Evil</option>
-        <option value="Ninja">Ninja</option>
+        <option value="blockchain">Blockchain</option>
+        <option value="bitcoin">BitCoin</option>
+        <option value="evil">Evil</option>
+        <option value="ninja">Ninja</option>
       </select>
       <label for="date">Month </label>
       <select id="month" v-model="month">

@@ -1,12 +1,10 @@
-<template
-  ><div>
+<template>
+<div>
     <Card
-      @click="onClick()"
       :card="card"
       v-for="card in cards"
       :key="card.cardId"
       :style="{
-        zIndex: card.cardId,
         top: card.cardId * 10 + '%'
       }"
     />
@@ -21,11 +19,11 @@ export default {
   computed: {
     cards() {
       return this.$root.$data.cards;
-    },
-    methods: {
-      onClick() {
-        this.$emit("clicked");
-      }
+    }
+  },
+  methods: {
+    clicked(event) {
+      this.$emit("clicked", event);
     }
   }
 };
