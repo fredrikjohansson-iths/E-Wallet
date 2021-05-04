@@ -1,5 +1,5 @@
 <template>
-  <div id="card" class="card" :class="card.vendorName">
+  <div @click="test" id="card" class="card" :class="card.vendorName">
     <img class="chip" src="chip-light.svg" />
     <img class="vendor" :src="card.vendorLogo" />
     <p id="cardnumber" class="cardnumber">{{ card.cardNumber }}</p>
@@ -13,6 +13,13 @@
 <script>
 export default {
   name: "Card",
+  methods: {
+    test() {
+      var index = this.card.cardId - 1;
+      this.$emit("test", index);
+      console.log(this.card.cardId);
+    }
+  },
   props: { card: Object }
 };
 </script>
@@ -46,16 +53,19 @@ button {
 
 .card {
   display: block;
-  width: 95%;
+  width: 80%;
+  max-width: 400px;
+  min-width: 400px;
   border-radius: 20px;
   border: 1px solid grey;
-  margin: auto;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  bottom: 0;
+  bottom: -30%;
   right: 0;
-  height: 33%;
+  height: 250px;
+  margin-top: 10%;
+  margin: auto;
 }
 .cardholder {
   font-size: 0.8rem;

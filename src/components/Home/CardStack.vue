@@ -1,6 +1,7 @@
 <template>
-<div>
+<div><Card :card="test" :style="{bottom: 20 + '%'}" />
     <Card
+      @test="clicked"
       :card="card"
       v-for="card in cards"
       :key="card.cardId"
@@ -17,16 +18,21 @@ export default {
   name: "CardStack",
   components: { Card },
   computed: {
+    test(){ return this.$root.$data.cards[this.$data.id]; },
     cards() {
       return this.$root.$data.cards;
     }
+  },data() {
+    return {
+      id: "",
+    }
   },
   methods: {
-    clicked(event) {
-      this.$emit("clicked", event);
-    }
-  }
-};
+    clicked(event){
+      this.$data.id = event
+      
+  },
+}};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

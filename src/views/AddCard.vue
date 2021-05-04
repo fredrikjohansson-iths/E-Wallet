@@ -1,11 +1,14 @@
 <template>
   <div class="">
     <Heading title="E-Wallet" subTitle="Add new cards" />
-    <Form @submitted="onSubmit" />
-    <Card :card="cards" />
+    <Form @submitted="newCard" />
+    <Card id="preview" :card="card" />
   </div>
 </template>
-
+<style scoped>
+#preview {left: 30%;
+bottom: 5%;}
+</style>
 <script>
 // @ is an alias to /src
 import Heading from "@/components/Heading.vue";
@@ -14,21 +17,15 @@ import Card from "@/components/Card.vue";
 
 export default {
   name: "AddCard",
+  data() {
+    return {
+      card: Object
+    }
+  },
   components: {
     Heading,
     Form,
     Card
   },
-  computed: {
-    cards() {
-      const cards = this.$root.$data.cards;
-      return cards;
-    }
-  },
-  methods: {
-    onSubmit() {
-      //var root = this.$root.$data.creditcard;
-    }
-  }
 };
 </script>

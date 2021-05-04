@@ -1,14 +1,14 @@
 <template>
   <div class="">
-    <form>
-      <label for="firstname">First name </label>
-      <input type="text" id="firstname" v-model="cname1" />
-      <label for="lastname">Last name </label>
-      <input type="text" id="lastname" v-model="cname2" />
-      <label for="cardnumber">Card number </label>
-      <input id="cardnumber" type="text" v-model="cnum" />
-      <label for="vendor">Vendor </label>
-      <select id="vendor" v-model="vendor">
+    <form class="flex">
+      <label class="" for="firstname">First name</label>
+      <input class="" type="text" id="firstname" v-model="cname1" />
+      <label class="" for="lastname">Last name </label>
+      <input class="" type="text" id="lastname" v-model="cname2" />
+      <label class="" for="cardnumber">Card number </label>
+      <input class="" id="cardnumber" type="text" v-model="cnum" />
+      <label class="" for="vendor">Vendor </label>
+      <select class="" id="vendor" v-model="vendor">
         <option value="blockchain">Blockchain</option>
         <option value="bitcoin">BitCoin</option>
         <option value="evil">Evil</option>
@@ -38,13 +38,16 @@
         <option value="25">2025</option>
       </select>
     </form>
-    <button @click="onSubmit">Test here</button>
+    <button @click="onSubmit()">Test here</button>
+    <Card id="preview" :card="card" />
   </div>
 </template>
 
 <script>
+import Card from "@/components/Card.vue";
 export default {
   name: "Form",
+  components: { Card },
   data: function() {
     return {
       cname1: "",
@@ -60,7 +63,7 @@ export default {
     newData() {
       const rootData = this.$root.$data.cards;
       return {
-        cardId: rootData.length,
+        cardId: rootData.length + 1,
         cardDate: this.month + "/" + this.year,
         cardHolder: this.cname1 + " " + this.cname2,
         cardNumber: this.cnum
@@ -75,11 +78,23 @@ export default {
     onSubmit: function() {
       var rootData = this.$root.$data.cards;
       rootData.push(this.newData);
-      this.$emit("submitted");
+      this.$emit("submitted", this.newData);
     }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+form {
+  flex-direction: column;
+  display: flex;
+  width: max-content;
+}
+
+input,
+label,
+select {
+  margin: 3%;
+}
+</style>
