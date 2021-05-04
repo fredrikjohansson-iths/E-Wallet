@@ -9,7 +9,11 @@
 </template>
 
 <style lang="scss">
-body {max-width: 561px; margin-left: 0; margin-right: 0;}
+body {
+  max-width: 561px;
+  margin-left: 0;
+  margin-right: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

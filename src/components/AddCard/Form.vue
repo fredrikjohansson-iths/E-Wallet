@@ -1,6 +1,15 @@
 <template>
   <div class="">
     <form class="flex">
+      <div id="card" class="card" :class="vendor">
+        <img class="chip" src="chip-light.svg" />
+        <img class="vendor" :src="newData.vendorLogo" />
+        <p id="cardnumber" class="cardnumber">{{ newData.cardNumber }}</p>
+        <p class="cardholder">CARDHOLDER NAME</p>
+        <p id="cardname" class="cardname">{{ newData.cardHolder }}</p>
+        <p class="validthru">VALID THRU</p>
+        <p class="date">{{ newData.cardDate }}</p>
+      </div>
       <label class="" for="firstname">First name</label>
       <input class="" type="text" id="firstname" v-model="cname1" />
       <label class="" for="lastname">Last name </label>
@@ -38,16 +47,13 @@
         <option value="25">2025</option>
       </select>
     </form>
-    <button @click="onSubmit()">Test here</button>
-    <Card id="preview" :card="card" />
+    <button @click="onSubmit()">Save</button>
   </div>
 </template>
 
 <script>
-import Card from "@/components/Card.vue";
 export default {
   name: "Form",
-  components: { Card },
   data: function() {
     return {
       cname1: "",
@@ -96,5 +102,86 @@ input,
 label,
 select {
   margin: 3%;
+}
+
+.bitcoin {
+  background-color: #ffb74a;
+}
+
+.ninja {
+  background-color: #363636;
+  color: silver;
+}
+
+.blockchain {
+  background-color: #7f51e4;
+}
+
+.evil {
+  background-color: #db2e4d;
+}
+
+.card {
+  display: block;
+  width: 80%;
+  max-width: 400px;
+  min-width: 400px;
+  border-radius: 20px;
+  border: 1px solid grey;
+  position: fixed;
+  top: 0;
+  left: 45%;
+  bottom: 20%;
+  right: 0;
+  height: 250px;
+  margin-top: 10%;
+  margin: auto;
+}
+.cardholder {
+  font-size: 0.8rem;
+  top: 64%;
+  position: absolute;
+  left: 2%;
+}
+.cardname {
+  position: absolute;
+  font-size: 1.3rem;
+  top: 70%;
+  left: 2%;
+}
+.cardnumber {
+  position: absolute;
+  font-size: 2rem;
+  top: 33%;
+  left: 2%;
+  letter-spacing: 0.1rem;
+}
+
+.chip {
+  position: absolute;
+  top: 4%;
+  left: 3%;
+  height: 34%;
+}
+
+.date {
+  position: absolute;
+  font-size: 1.3rem;
+  top: 70%;
+  left: 83%;
+}
+
+.validthru {
+  font-size: 0.8rem;
+  top: 64%;
+  position: absolute;
+  left: 77%;
+}
+
+.vendor {
+  height: 20%;
+  top: 8%;
+  position: absolute;
+  left: 84%;
 }
 </style>

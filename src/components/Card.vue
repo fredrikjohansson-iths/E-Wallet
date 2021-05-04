@@ -1,5 +1,5 @@
 <template>
-  <div @click="test" id="card" class="card" :class="card.vendorName">
+  <div @click="active" id="card" class="card" :class="card.vendorName">
     <img class="chip" src="chip-light.svg" />
     <img class="vendor" :src="card.vendorLogo" />
     <p id="cardnumber" class="cardnumber">{{ card.cardNumber }}</p>
@@ -14,10 +14,9 @@
 export default {
   name: "Card",
   methods: {
-    test() {
+    active() {
       var index = this.card.cardId - 1;
-      this.$emit("test", index);
-      console.log(this.card.cardId);
+      this.$emit("active", index);
     }
   },
   props: { card: Object }
@@ -25,7 +24,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style scoped lang="css">
 button {
   width: max-content;
   height: 20%;

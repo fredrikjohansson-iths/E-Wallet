@@ -1,7 +1,8 @@
 <template>
-<div><Card :card="test" :style="{bottom: 20 + '%'}" />
+  <div>
+    <Card :card="active" :style="{ bottom: 20 + '%' }" />
     <Card
-      @test="clicked"
+      @active="clicked"
       :card="card"
       v-for="card in cards"
       :key="card.cardId"
@@ -17,22 +18,29 @@ import Card from "@/components/Card.vue";
 export default {
   name: "CardStack",
   components: { Card },
+  beforeMount() {
+    var latestIndex = this.$root.$data.cards.length - 1;
+    this.$data.id = latestIndex;
+  },
   computed: {
-    test(){ return this.$root.$data.cards[this.$data.id]; },
+    active() {
+      return this.$root.$data.cards[this.$data.id];
+    },
     cards() {
       return this.$root.$data.cards;
     }
-  },data() {
+  },
+  data() {
     return {
-      id: "",
-    }
+      id: ""
+    };
   },
   methods: {
-    clicked(event){
-      this.$data.id = event
-      
-  },
-}};
+    clicked(event) {
+      this.$data.id = event;
+    }
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
