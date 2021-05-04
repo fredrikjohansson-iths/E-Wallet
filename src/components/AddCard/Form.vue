@@ -47,10 +47,11 @@
         <option value="25">2025</option>
       </select>
     </form>
-    <button @click="onSubmit()">Save</button>
+    <button id="save" @click="onSubmit()">
+      <p>Save<i id="check" class="fa fa-check"></i></p>
+    </button>
   </div>
 </template>
-
 <script>
 export default {
   name: "Form",
@@ -85,6 +86,7 @@ export default {
       var rootData = this.$root.$data.cards;
       rootData.push(this.newData);
       this.$emit("submitted", this.newData);
+      this.$router.push("/")
     }
   }
 };
@@ -183,5 +185,27 @@ select {
   top: 8%;
   position: absolute;
   left: 84%;
+}
+#check {
+  margin-left: 10px;
+}
+#save {
+  backface-visibility: hidden;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  background: #42b983;
+  border-radius: 11px;
+  border: 3px solid #ffffff;
+  border-width: 3px 3px 3px 3px;
+  color: #ffffff;
+  font-size: 20px;
+  font-family: arial;
+  font-weight: 300;
+  font-style: normal;
+}
+#save:hover {
+  background-color: #38a172;
 }
 </style>
